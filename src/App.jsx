@@ -635,6 +635,9 @@ function App() {
 
         {activeSection === "Resume" && (
           <>
+          <p className="mobile-resume-note">
+            Resume preview may not display on mobile. Please open or download the PDF.
+          </p>
 
             <div className="resume-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="download-btn">

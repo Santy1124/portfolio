@@ -1,16 +1,99 @@
-# React + Vite
+# Portfolio Deployment Workflow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Local Development
 
-Currently, two official plugins are available:
+Start the development server:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm run dev
+```
 
-## React Compiler
+Build locally:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+```
 
-## Expanding the ESLint configuration
+## Updating the Portfolio
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Open Command Prompt and navigate to the project folder:
+
+```cmd
+cd /d "D:\Personal\portfolio\portfolio"
+```
+
+Check current status:
+
+```cmd
+git status
+```
+
+Add changes:
+
+```cmd
+git add .
+```
+
+Commit changes:
+
+```cmd
+git commit -m "Describe your changes"
+```
+
+Push to GitHub:
+
+```cmd
+git push
+```
+
+## Automatic Deployment
+
+The portfolio is connected to:
+
+* GitHub Repository
+* Vercel
+
+After every successful `git push`, Vercel automatically deploys the latest version.
+
+No manual deployment is required.
+
+## Useful Commands
+
+Check repository status:
+
+```cmd
+git status
+```
+
+View commit history:
+
+```cmd
+git log --oneline
+```
+
+Check connected remote repository:
+
+```cmd
+git remote -v
+```
+
+Run locally:
+
+```cmd
+npm run dev
+```
+
+Create production build:
+
+```cmd
+npm run build
+```
+
+
+
+
+cd /d "D:\Personal\portfolio\portfolio"
+
+git add .
+git commit -m "Updated mobile layout"
+git push

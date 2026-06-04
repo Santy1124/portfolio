@@ -775,6 +775,28 @@ main {
 }
 
 
+.mobile-resume-note {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .mobile-resume-note {
+    display: block;
+    text-align: center;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .resume-viewer {
+    display: none;
+  }
+}
+
+
+
+
+
 
 
 
