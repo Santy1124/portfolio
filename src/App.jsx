@@ -270,11 +270,11 @@ function App() {
                 <h4>Preprocessing</h4>
 
                 <img
-                  src="/projects/diohelios/preprocessing.png"
+                  src="/projects/diohelios/preprocessing_tool.png"
                   alt="DioHelios preprocessing"
                   className="clickable-image"
                   onClick={() =>
-                    setZoomImage("/projects/diohelios/preprocessing.png")
+                    setZoomImage("/projects/diohelios/preprocessing_tool.png")
                   }
                 />
 
