@@ -23,7 +23,7 @@ function App() {
     <main>
       <nav className="navbar">
         <div className="brand">
-          <div className="logo">Santhosh Kumar Ravi Kumar</div>
+          <h1 className="logo">Santhosh Kumar Ravi Kumar</h1>
           <div className="subtitle">
             Machine Learning • Computer Vision • Software Development
           </div>
@@ -647,6 +647,9 @@ function App() {
                 title="Resume"
               />
             </div>
+            <p className="resume-help">
+              Preview unavailable? Use “Open Resume” or “Download Resume” above.
+            </p>
           </>
         )}
 
