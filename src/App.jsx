@@ -51,7 +51,17 @@ function App() {
             </div>
 
             <div className="about-center">
-              <h2>About Me</h2>
+              <div className="about-heading-row">
+                
+
+                <p className="education-inline">
+                  MSc · TU Munich
+                  <span> / </span>
+                  B.Tech · NIT Raipur
+                  <span> / </span>
+                  PG Diploma · NIT Warangal
+                </p>
+              </div>
 
               <p className="demo-description">
                 I build machine learning applications for scientific, biomedical, and
@@ -129,6 +139,7 @@ function App() {
               </div>
             </div>
           </div>
+
 
           <h3 className="subsection-title">Experience</h3>
 
