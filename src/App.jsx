@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const sections = ["About", "Projects", "Resume"];
@@ -7,6 +7,17 @@ function App() {
   const [activeSection, setActiveSection] = useState("About");
   const [selectedProject, setSelectedProject] = useState("diohelios");
   const [zoomImage, setZoomImage] = useState(null);
+  const imageDialogRef = useRef(null);
+
+  useEffect(() => {
+    const dialog = imageDialogRef.current;
+
+    if (zoomImage && !dialog.open) {
+      dialog.showModal();
+    } else if (!zoomImage && dialog.open) {
+      dialog.close();
+    }
+  }, [zoomImage]);
 
   return (
     <main>
@@ -47,6 +58,31 @@ function App() {
                 real-world data problems. I enjoy turning complex research workflows into usable software
                 products.
               </p>
+
+              <div className="hero-actions">
+                <button
+                  type="button"
+                  className="hero-action hero-action-primary"
+                  onClick={() => setActiveSection("Projects")}
+                >
+                  View Projects
+                </button>
+
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="hero-action"
+                >
+                  Download CV
+                </a>
+
+                <a
+                  href="mailto:santhoshkumarrk98@gmail.com"
+                  className="hero-action"
+                >
+                  Contact
+                </a>
+              </div>
 
 
               <div className="tech-stack about-skills">
@@ -141,7 +177,12 @@ function App() {
                 setSelectedProject("diohelios");
                 setActiveSection("Projects");
               }}
-            >
+            ><img
+                src="/projects/diohelios/frontend_inspection.png"
+                alt="DioHelios laser diode inspection interface"
+                className="featured-project-image"
+                loading="lazy"
+              />
               <p className="demo-label">Computer Vision • ML • Flask</p>
               <h3>DioHelios</h3>
               <p>
@@ -155,7 +196,13 @@ function App() {
                 setSelectedProject("carlos");
                 setActiveSection("Projects");
               }}
-            >
+              
+            ><img
+              src="/projects/carlos/azure_gpt4o.png"
+              alt="CARLOS clinical document extraction application"
+              className="featured-project-image"
+              loading="lazy"
+            />
               <p className="demo-label">VLMs • NLP • Clinical Documents</p>
               <h3>CARLOS</h3>
               <p>
@@ -169,7 +216,12 @@ function App() {
                 setSelectedProject("calopy");
                 setActiveSection("Projects");
               }}
-            >
+            ><img
+              src="/projects/calopy.png"
+              alt="Calopy metabolic data analysis dashboard"
+              className="featured-project-image"
+              loading="lazy"
+            />
               <p className="demo-label">Data Visualization • Shiny • Python</p>
               <h3>Calopy / Calimera</h3>
               <p>
@@ -229,13 +281,10 @@ function App() {
 
           {selectedProject === "diohelios" && (
           <div className="project-detail">
-
             <div className="project-hero-card">
-
               <div className="project-hero-text">
-
                 <p className="demo-label">
-                  Computer Vision • AI • Quality Control • Flask 
+                  Computer Vision • AI • Quality Control • Flask
                 </p>
 
                 <h3>DioHelios - AI</h3>
@@ -262,120 +311,55 @@ function App() {
                   <span>OpenSeadragon</span>
                   <span>SQLite</span>
                 </div>
-
               </div>
 
               <div className="project-hero-preview">
-
                 <h4>Preprocessing</h4>
 
                 <img
-                  src="/projects/diohelios/preprocessing_tool.png"
+                  src="/projects/diohelios/preprocessing_tool_new.png"
                   alt="DioHelios preprocessing"
                   className="clickable-image"
                   onClick={() =>
-                    setZoomImage("/projects/diohelios/preprocessing_tool.png")
+                    setZoomImage("/projects/diohelios/preprocessing_tool_new.png")
                   }
                 />
 
                 <p>
-                  Extracts metadata, detects edges, computes diode and ROI regions,
-                  and generates defect predictions.
+                  Extracts metadata, detects edges, computes diode and ROI
+                  regions, and generates defect predictions.
                 </p>
-
               </div>
-
             </div>
 
             <div className="project-section">
+              <div className="feature-inline">
+                <h4>Key Features</h4>
+
+                <p>
+                  Image Preprocessing • AI-Assisted Defect Detection •
+                  Expert Inspection • Quality Reporting
+                </p>
+              </div>
+            </div>
+
+            <div className="project-section azure-section">
               <h4>Frontend Inspection</h4>
 
-              <div className="project-gallery">
-                <div>
-                  <img
-                    src="/projects/diohelios/frontend_inspection.png"
-                    alt="Frontend inspection"
-                    className="clickable-image"
-                    onClick={() =>
-                      setZoomImage("/projects/diohelios/frontend_inspection.png")
-                    }
-                  />
+              <img
+                src="/projects/diohelios/frontend_inspection.png"
+                alt="DioHelios frontend inspection"
+                className="clickable-image"
+                onClick={() =>
+                  setZoomImage("/projects/diohelios/frontend_inspection.png")
+                }
+              />
 
-                  <p>
-                    Select inspection folders and images, visualize diode/ROI overlays, and assign quality codes.
-                  </p>
-                </div>
-
-                <div>
-                  <img
-                    src="/projects/diohelios/combined.png"
-                    alt="Combined diode bar view"
-                    className="clickable-image"
-                    onClick={() =>
-                      setZoomImage("/projects/diohelios/combined.png")
-                    }
-                  />
-
-                  <p>
-                    Compare front-side, top-side, and back-side visualizations for combined defect analysis.
-                  </p>
-                </div>
-
-                <div>
-                  <img
-                    src="/projects/diohelios/excel_export.png"
-                    alt="Inspection report export"
-                    className="clickable-image"
-                    onClick={() =>
-                      setZoomImage("/projects/diohelios/excel_export.png")
-                    }
-                  />
-
-                  <p>
-                    Group inspection results and export them to the required inspection protocol template.
-                  </p>
-                </div>
-              </div>
+              <p>
+                Select inspection folders and images, visualize diode/ROI
+                overlays, and assign quality codes.
+              </p>
             </div>
-
-            <div className="project-section">
-              <h4>Future Development</h4>
-
-              <div className="project-gallery two-column">
-
-                <div>
-                  <img
-                    src="/projects/diohelios/reclassification.png"
-                    alt="Reclassification tool"
-                    className="clickable-image"
-                    onClick={() =>
-                      setZoomImage("/projects/diohelios/reclassification.png")
-                    }
-                  />
-
-                  <p>
-                    Review and correct uncertain defect labels to improve future training datasets.
-                  </p>
-                </div>
-
-                <div>
-                  <img
-                    src="/projects/diohelios/maskrcnn.png"
-                    alt="MaskRCNN"
-                    className="clickable-image"
-                    onClick={() =>
-                      setZoomImage("/projects/diohelios/maskrcnn.png")
-                    }
-                  />
-
-                  <p>
-                    Dataset expansion, Mask R-CNN evaluation, and workflow integration are currently in progress.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
           </div>
         )}
 
@@ -635,9 +619,6 @@ function App() {
 
         {activeSection === "Resume" && (
           <>
-          <p className="mobile-resume-note">
-            Resume preview may not display on mobile. Please open or download the PDF.
-          </p>
 
             <div className="resume-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="download-btn">
@@ -664,11 +645,32 @@ function App() {
         © 2026 Santhosh Kumar Ravi Kumar
       </footer>
 
-      {zoomImage && (
-        <div className="image-modal" onClick={() => setZoomImage(null)}>
+      <dialog
+        ref={imageDialogRef}
+        className="image-modal"
+        aria-label="Expanded project image"
+        onCancel={() => setZoomImage(null)}
+        onClose={() => setZoomImage(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            setZoomImage(null);
+          }
+        }}
+      >
+        <button
+          type="button"
+          className="image-modal-close"
+          aria-label="Close image"
+          onClick={() => setZoomImage(null)}
+          autoFocus
+        >
+          ×
+        </button>
+
+        {zoomImage && (
           <img src={zoomImage} alt="Expanded project view" />
-        </div>
-      )}
+        )}
+      </dialog>
     </main>
   );
 }
